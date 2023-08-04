@@ -882,7 +882,7 @@ function editTaskDo(service_name, file_idx, uuid) {
             <tr>
             <td>`+globalFrontendText["status"]+`</td>
             <td id="task_status_td_`+ uuid + `">
-                <button class="ui tiny grey button"><i class="stop circle outline icon"></i>已调整</button>
+                <button class="ui tiny grey button"><i class="stop circle outline icon"></i>adjusted</button>
             </td>
             </tr>
             <tr>
