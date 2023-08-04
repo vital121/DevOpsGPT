@@ -565,7 +565,7 @@ function checkLint(service_name, filePath, uuid, times) {
     let buttonid = "task_status_check_lint_"+globalCompileTimes[service_name.replace("/","-")]+"_"+times+"_"+uuid
 
     str = $("#task_status_td_" + uuid).html()+`
-        <button class="ui circular olive icon button task_status_check_lint_button tiny `+service_name.replace("/","-")+`" id="` + buttonid + `" data-content="点击查看代码" onClick="showCode(this)"><i class="spinner loading icon"></i> `+globalFrontendText["static_scan"]+`</button>
+        <button class="ui circular olive icon button task_status_check_lint_button tiny `+service_name.replace("/","-")+`" id="` + buttonid + `" data-content="Click to view the code" onClick="showCode(this)"><i class="spinner loading icon"></i> `+globalFrontendText["static_scan"]+`</button>
         `
     $("#task_status_td_" + uuid).html(str)
     $('.task_status_check_lint_button').popup();
