@@ -14,6 +14,8 @@ def chatCompletion(context):
     try:
         print(context)
         message, success = obj.chatCompletion(context)
+        print(message)
+        print(success)
     except Exception as e:
         print("chatCompletion failed first time:" + str(e))
         try:
