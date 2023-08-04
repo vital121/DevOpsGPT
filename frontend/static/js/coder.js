@@ -1165,7 +1165,7 @@ function clarify(customPrompt, thisElement) {
 
     var userName = getParameterByName('userName');
     var requestData = JSON.stringify({ 'user_prompt': customPrompt, 'global_context': JSON.stringify(globalContext) })
-    var retruBtn = '<br /><br /><button class="ui green button" onClick="clarify(\''+escapeHtml(customPrompt)+'\', this)">重试</button>'
+    var retruBtn = '<br /><br /><button class="ui green button" onClick="clarify(\''+escapeHtml(customPrompt)+'\', this)">Retry</button>'
 
     successCallback = function(data){
         data = data.data
