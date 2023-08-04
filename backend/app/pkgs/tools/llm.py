@@ -12,6 +12,7 @@ def chatCompletion(context):
     message = "" 
     success = False
     try:
+        print(context)
         message, success = obj.chatCompletion(context)
     except Exception as e:
         print("chatCompletion failed first time:" + str(e))
