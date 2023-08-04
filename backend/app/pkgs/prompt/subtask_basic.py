@@ -85,7 +85,7 @@ Do not explain the code, just give the JSON, Ensure the response can be parsed b
 JSON Field description:
 ```
 0. "service-name": the value only can be """+serviceName+""".
-1. "code-interpreter": field must be in chinese.
+1. "code-interpreter": field must be in english.
 2. "code": Please note that the code should be fully functional. No placeholders, and should not contain pseudocode or unfinished code or todo code. Ensure correlation and integrity between different code files to ensure that all code works correctly.
 3. "code-interpreter": As a senior developer, you must explain the "code" you provide in detail in "code-interpreter" field, and this explain should be independent. For example: specific variable names and types to be added and modified, method names to be added or modified, parameter names, and so on.
 4. "file-path": Do not include "service-name" in the path. 
