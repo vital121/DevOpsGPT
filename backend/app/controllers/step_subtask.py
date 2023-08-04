@@ -58,7 +58,7 @@ def analysis():
                     filesToEdit[serviceNamex]["files"][index]["reference-code"] = ''
     
         plugin = {"name": 'task_list', "info": filesToEdit}
-        session[username]['memory']['tasks'] = filesToEdit # 这里不更新session，只给前端用
+        session[username]['memory']['tasks'] = filesToEdit # The session is not updated here, only for the front end
 
         return {'plugin': plugin, 'memory': session[username]['memory']}
     else:
