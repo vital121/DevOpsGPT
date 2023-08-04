@@ -49,8 +49,8 @@ def setp3Code(message, context, appBasePrompt, msg, serviceName):
         "role": "user",
         "content": appBasePrompt + """。
 
-根据拆分后的所有子步骤在"""+serviceNameStr+"""服务下写出完整的可运行代码
-要求：
+According to all sub-steps after splitting in"""+serviceNameStr+"""Write a complete runnable code under the service
+Require：
 """ + msg + """
 
 You will write a very long answer. Make sure that every detail of the architecture is, in the end, implemented as code.
@@ -69,13 +69,13 @@ Format example:
       "file-path": "src/aaa.java",
       "reference-file": "reference-file",
       "code": "import org.springframework.web.bind.annotation.RestController;\\n@RestController\\npublic class TargetController",
-      "code-interpreter": "在代码中增加一个新的方法 getFile，输入：repopath、filepath，返回：filecontent",
+      "code-interpreter": "Add a new method getFile in the code, input: repopath, filepath, return: filecontent",
     },
     {
       "file-path": "main.go",
       "reference-file": "reference-file",
       "code": "package main\\n func readFile(filePath str)\\n{\\n  return io.readFile(filePath)\\n}",
-      "code-interpreter": "在入口文件中增加一个新的接口readFile，输入:filePath,调用io包读取文件内容,返回:fileContent"
+      "code-interpreter": "Add a new interface readFile in the entry file, input: filePath, call the io package to read the file content, and return: fileContent"
     }
   ]
 }
@@ -113,9 +113,9 @@ def setp2Again(message, context, msg):
 
     context.append({
         "role": "user",
-        "content": """结合已拆分的子步骤，再根据要求检查一遍。一步一步思考，再仔细分析子步骤，每个子步骤尽可能详细描述。注意请不要写代码。
+        "content": """Combine the sub-steps that have been split, and check it again as required. Think step by step, and then carefully analyze the sub-steps, and describe each sub-step in as much detail as possible. Be careful not to write code.
 
-要求：
+Require:
 """ + msg + """
 """
     })
@@ -127,16 +127,16 @@ def setp2Again(message, context, msg):
 
 def setp1Task(feature, appBasePrompt, serviceStruct, specification):
     context = []
-    content = appBasePrompt + """。你的任务是根据下面提供的应用的基本信息 "Application Information" 和 "开发要求" ，一步一步思考，从完成代码开发的角度将下面提供的 "Development Tasks" 拆分成多个操作步骤，每个步骤不能重复并尽可能详细描述。
-注意只分析步骤不要写代码，分解要适当合理，既不要过度拆分也不要漏掉关键步骤。
-注意步骤中不应该包含与编码工作无关的内容，比如：准备环境、执行测试、执行打包部署等。
+    content = appBasePrompt + """. Your task is to think step by step according to the basic information "Application Information" and "Development Requirements" of the application provided below, and split the "Development Tasks" provided below into multiple operation steps from the perspective of completing code development, each Steps cannot be repeated and are described in as much detail as possible.
+Pay attention to only analyze the steps and not write codes, the decomposition should be appropriate and reasonable, neither excessive splitting nor missing key steps.
+Note that the steps should not contain content that is not related to coding work, such as: preparing the environment, performing tests, performing package deployment, etc.
 
-Application Information（注意：directory_structure 是项目的目录结构描述。）：
+Application Information (Note: directory_structure is the directory structure description of the project.)：
 ```
 """ + serviceStruct + """
 ```
 
-开发要求：
+Development requirements:
 """ + specification + """  
 
 Development Tasks:
@@ -153,21 +153,21 @@ Development Tasks:
 # choose lib by req
 def setpReqChooseLib(feature, appBasePrompt, projectInfo, projectLib):
     context = []
-    content = appBasePrompt + """，你的任务是分析需求找合适的组件的名字。一步一步的思考，结合已有的项目信息以及已有组件列表，分析用户输入的需求使用哪些组件，注意只在已有组件里选择。注意请不要写代码
+    content = appBasePrompt + """，Your task is to analyze the requirements to find the appropriate component name. Think step by step, combine the existing project information and the list of existing components, analyze which components are used for the requirements input by the user, and only select among the existing components. Be careful not to write code
 
-注意返回的组件名称，只需要包含名字不需要包含说明，另外组件名字必须和组件列表中保持完全一致。
+Note that the returned component name only needs to contain the name without the description, and the component name must be exactly the same as that in the component list.
 
-项目信息：
+Project information:
 ```
 """ + projectInfo + """
 ```
     
-组件列表：
+Component list:
 ```
 """ + projectLib + """
 ```
 
-需求：
+need:
 ```
 """ + feature + """
 ```
@@ -196,7 +196,7 @@ You should only directly respond in JSON format as described below, Ensure the r
     return json.loads(data), success
 
 
-# 分析需求分类
+# Analysis Requirements Classification
 def setpReqCls(feature):
     context = []
     content = """As a system architect, your task is to analyze user requirements and determine the type of requirement. When developing within an existing project, you should think step by step.
