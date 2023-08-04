@@ -426,7 +426,7 @@ function triggerPlugin(plugin) {
 }
 
 function pluginTaskRunner(info) {
-    if (info["status"] == "已失败") {
+    if (info["status"] == "has failed") {
         $("#task_status_redo_"+info["front_uuid"]).children().removeClass("spinner")
         $("#task_status_redo_"+info["front_uuid"]).children().removeClass("loading")
         $("#task_status_redo_"+info["front_uuid"]).children().addClass("close")
@@ -1029,7 +1029,7 @@ function startPush(service_name) {
 }
 
 function startCi(repo_path, repo_branch) {  
-    customPrompt = "基于代码库 "+repo_path+" 的 "+repo_branch+" 分支触发持续集成。" 
+    customPrompt = "Trigger continuous integration based on the "+repo_branch+" branch of the repository "+repo_path+"." 
 
     thinkUI(customPrompt, globalFrontendText["ai_think"])
     
@@ -1091,7 +1091,7 @@ function refreshPluginciStatus(piplineID, repopath, piplineUrl, element, times) 
         if( times < 20 ) {
             loadingClass = "loading"
         }
-        var str = `<h4>自动化集成测试 <div class="ui olive `+loadingClass+` button" onclick="refreshPluginciStatus('` + piplineID + `','` + repopath + `', '`+piplineUrl+`', this, 20)"><i class="sync icon"></i>更新状态</div><div class="ui blue button" onclick="window.open('`+piplineUrl+`', '_blank');"><i class="tasks icon"></i>访问流水线</div></h4><div class="ui middle aligned divided list">`
+        var str = `<h4>Automated Integration Tests <div class="ui olive `+loadingClass+` button" onclick="refreshPluginciStatus('` + piplineID + `','` + repopath + `', '`+piplineUrl+`', this, 20)"><i class="sync icon"></i>update status</div><div class="ui blue button" onclick="window.open('`+piplineUrl+`', '_blank');"><i class="tasks icon"></i>access pipeline</div></h4><div class="ui middle aligned divided list">`
         var allDone = true
         data["piplineJobs"].forEach(element => {
             var jobDone = false
@@ -1103,7 +1103,7 @@ function refreshPluginciStatus(piplineID, repopath, piplineUrl, element, times) 
                 icon = '<i class="times circle red  icon big pluginci-status" data-title='+element['status']+'></i>'
                 jobDone = true
             }
-            str += '<div class="item"><div class="right floated content"><div data-title="执行日志" onClick="myAlert(\'任务日志\',\''+element['log']+'\')" class="ui button pluginci-status">查看日志</div></div>'+icon+'<div class="content">' + element['job_name'] + '</content></div></div>'
+            str += '<div class="item"><div class="right floated content"><div data-title="execution log" onClick="myAlert(\'mission log\',\''+element['log']+'\')" class="ui button pluginci-status">view log</div></div>'+icon+'<div class="content">' + element['job_name'] + '</content></div></div>'
             if (jobDone==false) {
                 allDone = false    
             }
@@ -1151,7 +1151,7 @@ function clarifyOk(element) {
     inputs.each(function() { 
         $(this).prop('disabled', true);
         let q = $(this).parent().parent().prev().children("span").text()
-        content += globalFrontendText["question"]+question+", "+q+" 回答："+$(this).val()+"；\n"; 
+        content += globalFrontendText["question"]+question+", "+q+" answer："+$(this).val()+"；\n"; 
         question++
     }); 
     clarify(content)
