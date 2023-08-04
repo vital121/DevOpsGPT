@@ -80,7 +80,7 @@ def gitpush():
                             session[userName]['memory']['task_info']['feature_branch'], parts[0])
     result, success = pushCode(
         parts[2], session[userName]['memory']['task_info']['feature_branch'], parts[0], code, commitMsg)
-    newPrompt = "基于 " + \
-        session[userName]['memory']["repoPath"]+" 代码分支进行自动化集成测试"
+    newPrompt = "based on " + \
+        session[userName]['memory']["repoPath"]+" Code branches for automated integration testing"
     
     return 
