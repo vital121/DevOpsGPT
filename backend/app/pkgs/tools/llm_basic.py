@@ -2,7 +2,7 @@ import threading
 import time
 import openai
 from app.pkgs.tools.llm_interface import LLMInterface
-from config import LLM_MODEL
+from config import LLM_MODEL, LLM_MODEL4
 from config import GPT_KEYS
 
 api_keys = GPT_KEYS
@@ -39,6 +39,10 @@ def get_next_api_key():
     return get_next_api_key()
 
 class LLMBase(LLMInterface):
+    def __init__(self, usegpt4=False):
+        self.model = LLM_MODEL4 if usegpt4 else LLM_MODEL
+        self.max_tokens = 8191 if usegpt4 else 10000
+        
     def chatCompletion(self, context):
         print("chartGPT - message:", flush=True)
         print(context, flush=True)
@@ -51,10 +55,10 @@ class LLMBase(LLMInterface):
         print("chartGPT - get api key:"+openai.api_key, flush=True)
 
         response = openai.ChatCompletion.create(
-            model= LLM_MODEL,
+            model= self.model,
             deployment_id = provider_data.get("deployment_id", None),
             messages=context,
-            max_tokens=10000,
+            max_tokens=self.max_tokens,
             temperature=0,
         )
 
