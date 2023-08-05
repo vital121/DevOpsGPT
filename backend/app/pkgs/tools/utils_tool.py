@@ -20,6 +20,7 @@ def detect_programming_language(file_path):
 
     for language, extensions in language_extensions.items():
         if file_extension.lower() in extensions:
+            print("detect_programming_language: ",language)
             return language
 
     return 'Unknown'
