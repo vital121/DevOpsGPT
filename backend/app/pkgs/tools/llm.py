@@ -3,11 +3,11 @@ from app.pkgs.tools.llm_pro import LLMPro
 from app.pkgs.tools.llm_basic import LLMBase
 from config import GRADE
 
-def chatCompletion(context):
+def chatCompletion(context, usegpt4=False):
     if GRADE == "base":
-        obj = LLMBase()
+        obj = LLMBase(usegpt4=usegpt4)
     else:
-        obj = LLMPro()
+        obj = LLMPro(usegpt4=usegpt4)
 
     message = "" 
     success = False
