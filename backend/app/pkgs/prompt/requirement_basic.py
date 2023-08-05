@@ -19,7 +19,7 @@ class RequirementBasic(RequirementInterface):
         except Exception as e:
             print(str(e))
 
-        maxCycle = 2
+        maxCycle = 3
         message = ""
         if len(preContext) == 0:
             session[session["username"]]["memory"]["clarifyRequirement"] = ""
@@ -46,7 +46,7 @@ Is there anything else unclear? If yes, continue asking less than 3 unclear ques
                 "role": "system",
                 "content": """As a senior full stack developer. Your task is to read user software development requirement and clarify or confirm them to complete a requirement document that integrates the requirement into the application. The document should include """+requirementsDetail+""".
 
-Specifically, First you need to think about a simple step-by-step guide, then provide a list of less than 5 highly relevant questions to clarify or confirm, and then wait for the user's answers. 
+Specifically, First you need to think about a simple step-by-step guide, then provide a list of less than 10 highly relevant questions to clarify or confirm, and then wait for the user's answers. 
 As a senior programmer, you have a lot of expertise based on which to guide users to clarify requirements, don't ask stupid questions.
 
 Application Information:
