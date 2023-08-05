@@ -19,7 +19,10 @@ def chatCompletion(context):
     except Exception as e:
         print("chatCompletion failed first time:" + str(e))
         try:
+            print(context)
             message, success = obj.chatCompletion(context)
+            print(message)
+            print(success)
         except Exception as e:
             print("chatCompletion failed second time:" + str(e))
             traceback.print_exc()
