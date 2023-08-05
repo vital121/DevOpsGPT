@@ -220,7 +220,7 @@ $(document).ready(function () {
         modelInfoUpdate(appName, content)
     });
 
-    // 提交任务
+    // submit task
     $('#generate-code-button').click(function () {
         $('#generate-code-button').addClass("disabled");
         var customPrompt = $('#prompt-textarea').val();
@@ -911,7 +911,7 @@ function editTask(service_name, file_idx) {
             </div>
             <div class="field">
                 <label>`+globalFrontendText["reasonfor_for_modification"]+`</label>
-                <textarea rows="4" disabled>`+ contents + `</textarea>
+                <textarea rows="4" >`+ contents + `</textarea>
             </div>
             <div class="field">
                 <label>`+globalFrontendText["adjust_code"]+`</label>
