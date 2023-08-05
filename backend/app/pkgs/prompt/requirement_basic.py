@@ -19,7 +19,7 @@ class RequirementBasic(RequirementInterface):
         except Exception as e:
             print(str(e))
 
-        maxCycle = 3
+        maxCycle = 2
         message = ""
         if len(preContext) == 0:
             session[session["username"]]["memory"]["clarifyRequirement"] = ""
