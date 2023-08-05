@@ -7,6 +7,9 @@ from config import GRADE
 
 class CodeBasic(CodeInterface):
     def aiReferenceRepair(self, newCode, referenceCode, fileTask):
+        print(referenceCode)
+        print(fileTask)
+        print(newCode)
         prompt = f"""
     As a senior full stack developer. Your task is to analyze the following "reference code" style and specification (including but not limited to: naming conventions, coding styles, import package specifications, comment specifications, etc.) line by line, and use this to correct the "development task corresponding code" with the "reference code" style and specification is inconsistent. Ensure that the newly generated code can conform to the overall code style and specification of the program as well as the reference code without compromising the "development task". The consolidated code responds according to the response format example.
 
