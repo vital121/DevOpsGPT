@@ -28,7 +28,7 @@ def getI18n(domain):
 def getFrontendText():
     _ = getI18n("frontend")
     return {
-        "title": _("DevOpsGPT"),
+        "title": _("AI Developer Operatons"),
         "change_language": _("切换为中文"),
         "start": _("Start"),
         "more_operations": _("More"),
